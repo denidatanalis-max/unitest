@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 - Not Found</title>
+</head>
+<body style="background-color: black; font-family: Arial; text-align: center; padding: 60px 20px; color: white;">
+    <h1>404</h1>
+    <h2>Halaman tidak ditemukan</h2>
+    <p>Alamat: <strong>{{URL}}</strong></p>
+    <p>Kembali ke beranda dalam
+       <strong id="count">3</strong> detik...</p>
+
+    <script>
+        let time = 2;
+        const timer = setInterval(() => {
+            time--;
+            document.getElementById("count").textContent = time;
+            if (time <= 0) {
+                clearInterval(timer);
+                window.location.replace("/");
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Hasil build Rust
+/target
+
+# Rahasia: kunci SSH, password, token
+.secrets/
+.env
+.env.*
+*.pem
+*.key
+*.ppk
+id_rsa*
+id_ed25519*
+id_depthculture*
+
+# File backup / versi lama script
+*-bak.*
+*-lama.*
+*.bak
+*.old
+
+# Log
+*.log
+
+# Sampah sistem & editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/

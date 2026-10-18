@@ -1,0 +1,5 @@
+1) Di laptop: cargo build --release --target x86_64-unknown-linux-musl
+2) Di VPS: sudo systemctl stop myunitest
+3) Di laptop: ./konek-vps.ps1 -Tujuan "~/myunitest/"
+4) Di VPS: sudo systemctl start myunitest
+5) Buka https://unitest.my.id/about di browser
