@@ -1,10 +1,12 @@
 use axum::{
     extract::{OriginalUri, Path},
     http::StatusCode,
-    response::{Html, Redirect},
+    response::{Html},
     routing::get,
     Router,
 };
+
+const HALAMAN_404: &str = include_str!("../templates/404.html");
 
 #[tokio::main]
 async fn main() {
@@ -30,7 +32,8 @@ fn routes() -> Router {
 async fn not_found(
     OriginalUri(uri): OriginalUri,
 ) -> (StatusCode, Html<String>) {
-    let url = uri.to_string();
+    let url = urlencoding::decode(uri.path())
+        .unwrap_or_else(|_| uri.path().into());
 
     let safe_url = url
         .replace('&', "&amp;")
@@ -39,21 +42,18 @@ async fn not_found(
         .replace('"', "&quot;")
         .replace('\'', "&#39;");
 
-    let html = tokio::fs::read_to_string("templates/404.html")
-        .await
-        .expect("Gagal membaca templates/404.html")
-        .replace("{{URL}}", &safe_url);
+    let html = HALAMAN_404.replace("{{URL}}", &safe_url);
 
     (StatusCode::NOT_FOUND, Html(html))
 }
 
 
 async fn home() -> &'static str {
-    "Hello, world!"
+    "anda di beranda!"
 }
 
 async fn about() -> &'static str {
-    "halaman about"
+    "anda di about"
 }
 
 async fn halo(Path(nama): Path<String>) -> String {

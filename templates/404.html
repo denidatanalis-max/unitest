@@ -8,21 +8,14 @@
 </head>
 <body style="background-color: black; font-family: Arial; text-align: center; padding: 60px 20px; color: white;">
     <h1>404</h1>
-    <h2>Halaman tidak ditemukan</h2>
-    <p>Alamat: <strong>{{URL}}</strong></p>
-    <p>Kembali ke beranda dalam
-       <strong id="count">3</strong> detik...</p>
+    <h2>Alamat yang anda tulis : <strong>{{URL}}</strong></h2>
+    <h2>Halaman tersebut tidak ditemukan</h2>
+    <p>Kembali ke beranda<strong></strong></p>
 
     <script>
-        let time = 2;
-        const timer = setInterval(() => {
-            time--;
-            document.getElementById("count").textContent = time;
-            if (time <= 0) {
-                clearInterval(timer);
-                window.location.replace("/");
-            }
-        }, 1000);
+        setTimeout(() => {
+            window.location.replace("/");
+        }, 2000);
     </script>
 </body>
 </html>
